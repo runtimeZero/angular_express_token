@@ -1,0 +1,46 @@
+<html ng-app="myApp">
+
+  <head>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <script src="./bower_components/angular/angular.js"></script>
+    <script src="./bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="./bower_components/angular-resource/angular-resource.js"></script>
+    <script src="./app.js"></script>
+  </head>
+
+
+  <body ng-controller="MainCtrl">
+
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <a class="brand" href="#">Authen Demo</a>
+        <ul class="nav">
+          <li><a href="#/">Route1</a></li>
+          <li><a href="#/route2">Route2</a></li>
+          <li><a href="#/route3">Route3</a></li>
+          <li><a href="#/login">Login</a></li>
+          <li><a href="#" ng-click="logout()">Logout </a></li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>NOTES:</h3>
+    <div class="well">
+      <ul>
+        <li>Route1 - The default Route. Open for all</li>
+        <li>Route2 - Open for Admin level users only (username:admin,password:admin)</li>
+        <li>Route3 - Open for logged in users(includes admin) (username:user,password:user)</li>
+        <li>Login - Open for all </li>
+      </ul>
+    </div>
+
+    Your status is: <span ng-show="user.id" style="color:red">Signed In</span>
+    <span ng-show="!user.id">Signed Out</span>
+    <p/>
+
+    <div ui-view></div>
+
+  </body>
+
+</html>

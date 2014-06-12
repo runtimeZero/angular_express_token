@@ -25,16 +25,25 @@ http.createServer(app).listen(conf.port,function(){
 });
 
 
-/****** Routes  *********/
+/****** Routes that don't need authorization  *********/
 app.get('/route1',function(req,res){
   res.json({key1: "Some data returned from route1"});
 });
 
-app.get('/route2',function(req,res){
-  res.json({key2: "Some data returned from route2"});
+
+/****** Routes that require admin level authorization  *********/
+
+app.get('/needAdminLevelInfo',auth.checkForAdmin,function(req,res){
+  res.json({key: "This sentence represents some data returned from server route 'needAdminLevelInfo'"});
 });
 
-app.post('/login',function(req,res){
+/****** Routes that require user level and above authorization  *********/
+
+app.get('/needUserLevelInfo',auth.checkForUser,function(req,res){
+  res.json({key: "This sentence represents some data returned from server route 'needUserLevelInfo'"});
+});
+
+app.post('/login',function(req,res,next){
 
   result = auth.authenticateCredentials(req,res,next);
 
