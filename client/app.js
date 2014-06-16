@@ -44,7 +44,7 @@ angular.module("myApp",['ui.router'])
 
 }])
 
-.controller('MainCtrl',['$scope','$rootScope','$location','$window','$log',function($scope,$rootScope,$location,$window,$log){
+.controller('MainCtrl',['$scope','$rootScope','$window',function($scope,$rootScope,$window){
 
   $rootScope.$on("$stateChangeStart",function(event,next){
 
